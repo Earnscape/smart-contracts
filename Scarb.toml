@@ -1,0 +1,29 @@
+[package]
+name = "earnscape_contracts"
+version = "0.1.0"
+edition = "2024_07"
+
+[dependencies]
+starknet = "2.12.2"
+
+[dependencies.openzeppelin]
+git = "https://github.com/OpenZeppelin/cairo-contracts.git"
+tag = "v0.20.0"
+
+[dev-dependencies]
+snforge_std = "0.51.1"
+
+[[target.starknet-contract]]
+sierra = true
+casm = true
+
+[scripts]
+test = "snforge test"
+
+[tool.scarb]
+allow-prebuilt-plugins = ["snforge_std"]
+
+
+# Note: removed the [scripts] section because defining scripts that call `scarb`
+# from within the manifest can cause recursive invocations. Use external shell
+# scripts or task runners for convenience commands instead.
