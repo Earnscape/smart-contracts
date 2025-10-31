@@ -49,6 +49,32 @@ pub const ONE_MILLION_TOKENS: u256 = 1_000_000_000_000_000_000_000_000; // 1M to
 pub const ONE_BILLION_TOKENS: u256 = 1_000_000_000_000_000_000_000_000_000; // 1B tokens
 
 // ============================================================================
+// Test Print Utilities
+// ============================================================================
+
+pub fn print_divider(title: felt252) {
+    println!("\n============================================================");
+    println!("  {}", title);
+    println!("============================================================\n");
+}
+
+pub fn print_step(step_num: u32, description: felt252) {
+    println!("\n[STEP {}] {}", step_num, description);
+}
+
+pub fn print_success(message: felt252) {
+    println!("  SUCCESS: {}", message);
+}
+
+pub fn print_check(message: felt252, value: u256) {
+    println!("  CHECK: {} = {}", message, value);
+}
+
+pub fn print_error_test(message: felt252) {
+    println!("  ERROR_TEST: {}", message);
+}
+
+// ============================================================================
 // Constants - Time
 // ============================================================================
 

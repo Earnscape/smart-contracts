@@ -658,13 +658,11 @@ mod EarnscapeStaking {
             self._adjust_stearn_balance(caller);
             let user_stearn_balance = vesting.get_stearn_balance(caller);
 
-            assert(user_earn_balance > 0 || user_stearn_balance > 0, 'No Earn or stEarn to stake');
+            assert!(user_earn_balance > 0 || user_stearn_balance > 0, "No Earn or stEarn to stake");
 
             // Check if all amount is releasable
             let (_, locked) = vesting.calculate_releasable_amount(caller);
-            if locked == 0 && user_stearn_balance > 0 {
-                panic(array!['Cannot able to stake!']);
-            }
+            assert!(locked == 0 || user_stearn_balance > 0, "Cannot stake with unlocked stEARN");
 
             // Determine which token to use
             if user_stearn_balance >= user_earn_balance {
